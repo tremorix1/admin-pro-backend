@@ -8,16 +8,17 @@ const app = express();
 
 // configuración de cors
 app.use(cors());
+// Lectura y parseo del body
+app.use(express.json());
 
 // DB
 dbConecction();
+//routes
 
-app.get('/',(req,res)=>{
-  res.json({
-    ok: true,
-    msg: 'Hola Mundo'
-  })
-})
+app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/login', require('./routes/auth'));
+
+
 app.listen(process.env.PORT,()=>{
   console.log('Escuchando el puerto: ',process.env.PORT);
 })
