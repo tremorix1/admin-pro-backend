@@ -13,6 +13,10 @@ app.use(express.json());
 
 // DB
 dbConecction();
+
+// directorio publico
+
+app.use(express.static('public'));
 //routes
 
 app.use('/api/usuarios', require('./routes/usuarios'));
